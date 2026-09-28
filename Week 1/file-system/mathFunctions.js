@@ -1,6 +1,8 @@
-export function add(a,b){
+function add(a,b){
     return a+b
 } 
-export function subtract(a,b){
+function subtract(a,b){
     return a-b
 }
+
+module.exports = {add,subtract}
