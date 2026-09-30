@@ -1,0 +1,5 @@
+Timestamp : 9/30/2026, 6:46:22 PM || URL : /search?name=John&age=25 || Parameters : name-John age-25 
+Timestamp : 9/30/2026, 6:46:28 PM || URL : /search
+Timestamp : 9/30/2026, 6:46:34 PM || URL : /home
+Timestamp : 9/30/2026, 6:46:42 PM || URL : /home
+Timestamp : 9/30/2026, 6:46:44 PM || URL : /profile
