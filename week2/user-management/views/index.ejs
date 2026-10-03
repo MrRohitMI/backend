@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+</head>
+<body>
+    <div>
+    <nav class="flex justify-between p-5 border-b items-center">
+        <div class="font-bold text-16">User Profile</div>
+        <div><a class="p-3 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer" href="/add-user">Add User</a></div>
+    </nav>
+       <section class="flex items-center flex-col">
+        <%if(count === 0) {%>
+       <div class="mb-5 font-bold">There is no user please add the user.</div> 
+       <div><a class="p-3 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer" href="/add-user">Add User</a></div>
+       <%} else {%>
+        <div class="bg-gray-200 p-3 rounded mt-5">
+            <%for(let i=0;i<=users.length-1;i++) {%>
+            <div class="flex gap-3 items-center mt-3">
+                <div><img src="<%=users[i].url%>" alt="Image" 
+                    class="h-15 w-15 rounded object-fit"></div>
+                <div>
+                    <h3 class="font-bold text-12"><%=users[i].name%></h3>
+                    <p class="text-gray-600 text-8"><%=users[i].email%></p>
+                </div>
+                <div>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="userId" value="<%=i%>">
+                        <button class="text-red-600 border border-red-600 rounded p-2 hover:bg-red-600 hover:text-white hover:cursor-pointer">
+                            Delete</button>
+                    </form></div>
+                    <div>
+                    <form action="/edit" method="post">
+                        <input type="hidden" name="userId" value="<%=i%>">
+                        <button class="text-red-600 border border-red-600 rounded p-2 hover:bg-red-600 hover:text-white hover:cursor-pointer">
+                            Edit</button>
+                    </form></div>
+            </div>
+            <%}%>
+        </div>
+        <%}%>
+       </section>
+</div>
+</body>
+</html>
