@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <section class="grid grid-cols-12">
+      <div class="h-screen bg-gray-200 col-span-2">
+        <div class="h-14 border-b flex justify-center items-center font-bold text-2xl"> Khatabook
+        </div>
+        <div class="font-bold text-lg bg-gray-300 p-2 m-2 rounded">
+           <a href="/create">Create Document</a> 
+        </div>
+        <%for(let i=0;i<=files.length-1;i++){%>
+            <a href="/edit/?fileName=<%=files[i]%>">
+        <div class="p-1 font-bold ml-2"><%=files[i]%></div></a>
+        <%}%>
+      </div>
+      <div class="col-span-10 h-screen">
+        <div class="h-14 border-b">
+            <%if(typeof fileName != 'undefined' && fileName){%>
+                <div class="pl-3"><%=fileName%></div>
+            <%}%>
+
+        </div>
+        <div class="mt-5 mx-5">
+            <%-body%>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
