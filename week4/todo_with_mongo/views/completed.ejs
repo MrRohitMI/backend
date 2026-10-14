@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="">
+        <div class="flex justify-between p-5 border-b mb-2"><a class="font-bold" href="/">Todo</a>
+        <a class="font-bold" href="/completed">Completed</a></div>
+    <div style="height: calc(100vh - 125px);" class="overflow-y-scroll">
+        <%for(let i=0;i<todos.length;i++){%>
+            <div class="border rounded w-[300px] m-auto p-3 font-bold mb-5 flex gap-2 items-center">
+               <%=todos[i].title%></div>
+        <%}%>
+    </div>
+   </div>
+  </body>
+</html>
