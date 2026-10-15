@@ -1,0 +1,4 @@
+requested method GET and url: /api/users by ::1
+requested method POST and url: /api/users by ::ffff:127.0.0.1
+requested method PATCH and url: /api/users/6ac896d9d5ea43cd40a0431c by ::ffff:127.0.0.1
+requested method DELETE and url: /api/users/6ac896d9d5ea43cd40a0431c by ::ffff:127.0.0.1
