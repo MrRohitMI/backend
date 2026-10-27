@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="text-center">
+        <div class="flex justify-between p-5 border-b mb-2"><a class="font-bold" href="/todos">Todo</a>
+        <a class="font-bold" href="/todos/completed">Completed</a></div>
+        <div style="height: calc(100vh - 125px);" class="overflow-y-scroll">
+        <%if(todos.length > 0){%>
+        <%for(let i=0;i<todos.length;i++){%>
+            <div class="border rounded w-[300px] m-auto p-3 font-bold mb-5 flex justify-between items-center">
+                <div class="flex gap-2 items-center">
+                <form action="/todos/<%=todos[i].id%>/complete" method="post">
+                <button class="p-3 border rounded-full border-gray-400 hover:bg-gray-400 cursor-pointer" title="Mark as completed">
+                </button>
+            </form><%=todos[i].title%></div><div class="text-right"> 
+                    <form action="/todos/<%=todos[i].id%>/delete" method="post">
+                <button class="p-1 border rounded border-red-400 hover:bg-red-400 cursor-pointer"> Delete
+                </button></form></div></div>
+        <%}%><%}else{%>
+        <p class="font-bold text-2xl">There is no incomplete task pending. Please add new todo.</p>
+        <%}%>
+    </div>
+    </div>
+    <div class="text-center">
+      <form action="/todos/submit" method="post">
+        <input type="text" placeholder="Enter Todo" name="title" class="border p-3 
+        focus:outline-none focus:ring-2 focus:ring-blue-600 rounded"/>
+        <button class="p-3 bg-blue-600 text-white font-bold rounded hover:bg-blue-800 cursor-pointer">Add</button>
+      </form>
+    </div>
+  </body>
+</html>
