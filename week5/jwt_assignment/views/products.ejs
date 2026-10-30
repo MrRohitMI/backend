@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body>
+        <nav class="bg-gray-200 p-4 flex gap-5">
+    <a href="/product" class="text-blue-600">Products</a>
+    <a href="/create-product" class="text-blue-600">Create Product</a>
+    <a href="/user/logout" class="text-red-600">Logout</a>
+</nav>
+          <section class="flex items-center flex-col">
+        <%if(count === 0) {%>
+       <div class="mb-5 font-bold">There is no product please add the product.</div> 
+       <div><a class="p-3 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer" href="/create-product">Add product</a></div>
+       <%} else {%>
+        <div class="bg-gray-200 p-3 rounded mt-5">
+            <%for(let i=0;i<products.length;i++) {%>
+            <div class="flex gap-3 items-center mt-3">
+                <div><img src="<%=products[i].imgUrl%>" alt="Image" 
+                    class="h-15 w-15 rounded object-fit"></div>
+                <div>
+                    <h3 class="font-bold text-12"><%=products[i].name%></h3>
+                    <p class="text-gray-600 text-8"><%=products[i].description%></p>
+                    <p class="text-gray-600 text-8"><%=products[i].price%></p>
+                </div>
+                <%if(user){%>
+                <div>
+                    <form action="/product/delete" method="post">
+                         <input type="hidden" name="productId" value="<%= products[i]._id %>">
+                        <button class="text-red-600 border border-red-600 rounded p-2 hover:bg-red-600 hover:text-white hover:cursor-pointer">
+                            Delete</button>
+                    </form></div>
+                    <div>
+                    <a href="/product/edit/<%= products[i]._id %>"
+                        class="text-blue-600 border border-blue-600 rounded p-2 hover:bg-blue-600 hover:text-white">
+                        Edit</a>
+                    </div>
+                 <%}%>   
+            </div>
+            <%}%>
+        </div>
+        <%}%>
+       </section>
+    </body>
+    </html>
+</body>
+</html>
