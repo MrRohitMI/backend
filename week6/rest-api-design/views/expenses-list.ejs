@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/create-expense">Add Expense</a>
+    </nav>
+    <%if(count !== 0){%>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(let i=0;i<=expenses.length-1;i++){%>
+            <tr>
+                <td><%=expenses[i].title%></td>
+                <td><%=expenses[i].amount%></td>
+                <td><%=expenses[i].category%></td>
+                <td><%=expenses[i].date.toLocaleString().slice(0,9)%></td>
+                <td>
+                    <div>
+                        <form action="/edit-expense" method="post">
+                            <input type="hidden" value="<%=expenses[i]._id%>" name="expenseId"/>
+                            <button>Edit</button></form></div>
+                    <div><form action="/expense/delete" method="post">
+                        <input type="hidden" value="<%=expenses[i]._id%>" name="expenseId"/>
+                        <button>Delete</button>
+                    </form></div>
+                </td>
+            </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <%}else{%>
+        <div><h3>There is no expense there.Plese add expense.</h3>
+            <a href="/create-expense">Add Expense</a>
+        </div>
+    <%}%>
+</body>
+</html>
